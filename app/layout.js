@@ -2,6 +2,8 @@ import { League_Spartan } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import ModeToggle from "@/components/ModeToggle";
+import Footer from "@/components/Footer";
+import { ClerkProvider } from "@clerk/nextjs"; 
 
 const leagueSpartan = League_Spartan({
   subsets: ["latin"],
@@ -14,20 +16,25 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body
-        className={`${leagueSpartan.className} antialiased`}
-      >
-        <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChang
+    <ClerkProvider>
+      <html lang="en">
+        <body
+          className={`${leagueSpartan.className} antialiased`}
         >
-          <ModeToggle />
-          {children}
-        </ThemeProvider>
-      </body>
-    </html>
+          <ThemeProvider
+              attribute="class"
+              defaultTheme="system"
+              enableSystem
+              disableTransitionOnChang
+          >
+            <main className="min-h-screen">
+              <ModeToggle />
+              {children}
+              <Footer />
+            </main>
+          </ThemeProvider>
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }
