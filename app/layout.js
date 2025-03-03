@@ -1,9 +1,9 @@
 import { League_Spartan } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
-import ModeToggle from "@/components/ModeToggle";
 import Footer from "@/components/Footer";
 import { ClerkProvider } from "@clerk/nextjs"; 
+import Header from "@/components/Header";
 
 const leagueSpartan = League_Spartan({
   subsets: ["latin"],
@@ -28,7 +28,7 @@ export default function RootLayout({ children }) {
               disableTransitionOnChang
           >
             <main className="min-h-screen">
-              <ModeToggle />
+              <Header />
               {children}
               <Footer />
             </main>
