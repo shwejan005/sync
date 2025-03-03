@@ -1,6 +1,7 @@
 import { League_Spartan } from "next/font/google";
 import "./globals.css";
-import { ThemeProvider } from "@/components/providers/ThemeProvider";
+import { dark } from "@clerk/themes";
+import { ThemeProvider } from "@/components/providers/ThemeProvider"; 
 import Footer from "@/components/Footer";
 import { ClerkProvider } from "@clerk/nextjs"; 
 import Header from "@/components/Header";
@@ -16,7 +17,9 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <ClerkProvider>
+    <ClerkProvider appearance={{
+      baseTheme: dark,
+    }}>
       <html lang="en">
         <body
           className={`${leagueSpartan.className} antialiased`}
