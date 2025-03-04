@@ -1,17 +1,18 @@
-import { League_Spartan } from "next/font/google";
+import { Cinzel_Decorative, League_Spartan } from "next/font/google";
 import "./globals.css";
 import { dark } from "@clerk/themes";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import { ClerkProvider } from "@clerk/nextjs";
 
+export const cinzel = Cinzel_Decorative({
+  weight: '700',
+  subsets: ["latin"],
+})
+
 const leagueSpartan = League_Spartan({
   subsets: ["latin"],
 });
 
-export const metadata = {
-  title: "Sync",
-  description: "Welcome to Sync",
-};
 
 export default function RootLayout({ children }) {
   return (
@@ -26,7 +27,7 @@ export default function RootLayout({ children }) {
               attribute="class"
               defaultTheme="system"
               enableSystem
-              disableTransitionOnChang
+              disableTransitionOnChange
           >
             <main className="min-h-screen">
               {children}
