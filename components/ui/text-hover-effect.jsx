@@ -78,7 +78,7 @@ export const TextHoverEffect = ({
         textAnchor="middle"
         dominantBaseline="middle"
         strokeWidth="0.3"
-        className="font-[helvetica] font-bold stroke-neutral-200 dark:stroke-neutral-800 fill-transparent text-7xl  "
+        className="font-[helvetica] font-bold stroke-neutral-400 dark:stroke-neutral-800 fill-transparent text-7xl  "
         style={{ opacity: hovered ? 0.7 : 0 }}>
         {text}
       </text>

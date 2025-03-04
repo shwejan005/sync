@@ -10,7 +10,7 @@ export default function Hero() {
       <p className="text-lg text-gray-500 mt-2">
         Connect, collaborate, and create in real time with your team.
       </p>
-      <Button className="mt-6 px-6 py-3 text-lg">Get Started</Button>
+      <Button className="mt-10 px-10 py-6 text-lg">Get Started</Button>
     </div>
   );
 }
