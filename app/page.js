@@ -1,11 +1,12 @@
 import Footer from "@/components/Footer"
 import Header from "@/components/Header"
+import Hero from "@/components/Hero"
 
 function Page() {
   return (
     <div>
       <Header />
-      <h1>Home</h1>
+      <Hero />
       <Footer />
     </div>
   )
