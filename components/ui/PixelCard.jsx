@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useCallback } from "react";
 
 class Pixel {
   constructor(canvas, context, x, y, color, speed, delay) {
@@ -153,31 +153,31 @@ export default function PixelCard({
   const finalColors = colors ?? variantCfg.colors;
   const finalNoFocus = noFocus ?? variantCfg.noFocus;
 
-  const initPixels = () => {
+  const initPixels = useCallback(() => {
     if (!containerRef.current || !canvasRef.current) return;
-
+  
     const rect = containerRef.current.getBoundingClientRect();
     const width = Math.floor(rect.width);
     const height = Math.floor(rect.height);
     const ctx = canvasRef.current.getContext("2d");
-
+  
     canvasRef.current.width = width;
     canvasRef.current.height = height;
     canvasRef.current.style.width = `${width}px`;
     canvasRef.current.style.height = `${height}px`;
-
+  
     const colorsArray = finalColors.split(",");
     const pxs = [];
     for (let x = 0; x < width; x += parseInt(finalGap, 10)) {
       for (let y = 0; y < height; y += parseInt(finalGap, 10)) {
         const color =
           colorsArray[Math.floor(Math.random() * colorsArray.length)];
-
+  
         const dx = x - width / 2;
         const dy = y - height / 2;
         const distance = Math.sqrt(dx * dx + dy * dy);
         const delay = reducedMotion.current ? 0 : distance;
-
+  
         pxs.push(
           new Pixel(
             canvasRef.current,
@@ -192,7 +192,7 @@ export default function PixelCard({
       }
     }
     pixelsRef.current = pxs;
-  };
+  }, [finalGap, finalSpeed, finalColors]);
 
   const doAnimate = (fnName) => {
     animationRef.current = requestAnimationFrame(() => doAnimate(fnName));
@@ -249,12 +249,12 @@ export default function PixelCard({
       observer.disconnect();
       cancelAnimationFrame(animationRef.current);
     };
-  }, [finalGap, finalSpeed, finalColors, finalNoFocus]);
+  }, [initPixels]);
 
   return (
     <div
       ref={containerRef}
-      className={`h-[400px] w-[300px] relative overflow-hidden grid place-items-center aspect-[4/5] border border-[#27272a] rounded-[25px] isolate transition-colors duration-200 ease-[cubic-bezier(0.5,1,0.89,1)] select-none ${className}`}
+      className={`h-[400px] w-[300px] relative overflow-hidden grid place-items-center aspect-[4/5] border border-[#27272a] rounded-[25px] isolate transition-colors duration-200 ease-[cubic-bezier\(0.5,1,0.89,1\)] select-none ${className}`}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
       onFocus={finalNoFocus ? undefined : onFocus}
