@@ -10,12 +10,17 @@ import { Button } from './ui/button'
 import UserMenu from './user-menu'
 
 const Header = () => {
-  const { theme } = useTheme()
+  const { systemTheme, theme } = useTheme();
 
-  const logoSrc = theme === 'dark' ? '/images/sync-b.png' : '/images/sync-w.png'
+    
+  const currentTheme = theme === "system" ? systemTheme : theme;
+
+  const logoSrc = currentTheme === "dark" 
+    ? "/images/sync-b.png" 
+    : "/images/sync-w.png";
 
   return (
-    <header className={`px-4 mb-8 border-b ${theme === "dark" ? "border-gray-700" : "border-gray-300"}`}>
+    <header className={`px-4 mb-8 border-b ${theme === "dark" ? "border-gray-700" : "border-gray-6f00"}`}>
 
       <nav className='py-6 px-4 flex justify-between items-center'>
         <Link href='/'>

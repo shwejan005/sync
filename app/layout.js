@@ -3,6 +3,7 @@ import "./globals.css";
 import { dark } from "@clerk/themes";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import { ClerkProvider } from "@clerk/nextjs";
+import Cursor from "@/components/ui/Cursor";
 
 export const cinzel = Cinzel_Decorative({
   weight: '700',
@@ -30,6 +31,7 @@ export default function RootLayout({ children }) {
               disableTransitionOnChange
           >
             <main className="min-h-screen">
+              <Cursor />
               {children}
             </main>
           </ThemeProvider>

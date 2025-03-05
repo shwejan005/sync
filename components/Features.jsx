@@ -52,7 +52,7 @@ export default function Features() {
           Key Features
         </h2>
         <p className="text-center text-primary mb-12 max-w-3xl mx-auto">
-          Discover how SYNC can transform your team's productivity.
+          Discover how SYNC can transform your team&#39;s productivity.
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
