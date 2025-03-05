@@ -1,5 +1,5 @@
 import React from "react";
-import { TextHoverEffect } from "@/components/ui/text-hover-effect";
+import { TextHoverEffect } from "./ui/text-hover-effect"; 
 import { Button } from "@/components/ui/button";
 
 export default function Hero() {
