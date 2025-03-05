@@ -1,30 +1,21 @@
-'use client'
-
 import React from 'react'
 import ModeToggle from './ModeToggle'
 import { SignedOut, SignInButton, SignedIn } from '@clerk/nextjs'
 import Link from 'next/link' 
 import Image from 'next/image'
-import { useTheme } from 'next-themes'
 import { Button } from './ui/button'
 import UserMenu from './user-menu'
+import { checkUser } from '@/lib/checkUser'
 
-const Header = () => {
-  const { systemTheme, theme } = useTheme();
-
-    
-  const currentTheme = theme === "system" ? systemTheme : theme;
-
-  const logoSrc = currentTheme === "dark" 
-    ? "/images/sync-b.png" 
-    : "/images/sync-w.png";
+const Header = async () => {
+  await checkUser()
 
   return (
-    <header className={`px-4 mb-8 border-b ${theme === "dark" ? "border-gray-700" : "border-gray-6f00"}`}>
+    <header className={`px-4 mb-8 border-b border-secondary/70`}>
 
       <nav className='py-6 px-4 flex justify-between items-center'>
         <Link href='/'>
-          <Image src={logoSrc} alt='logo' width={160} height={40} />
+          <Image src='/images/sync-w.png' alt='logo' width={160} height={40} />
         </Link>
 
         <div className='flex items-center justify-center gap-4'>
